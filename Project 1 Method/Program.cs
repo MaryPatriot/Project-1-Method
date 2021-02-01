@@ -96,7 +96,8 @@ namespace Project_1_Method
             }
             else if (vehicle == "1:Car" && Totalspenttime > 3)
             {
-                double VehicleCharge = Totalspenttime * 1.50;
+                double Newtime = Totalspenttime - 3;
+                double VehicleCharge = Newtime * 1.50;
                 Console.WriteLine(VehicleCharge);
                 return VehicleCharge;
             }
@@ -109,7 +110,8 @@ namespace Project_1_Method
             }
             else if (vehicle == "2:Bus" && Totalspenttime > 1)
             {
-                double VehicleCharge = Totalspenttime * 3.70;
+                double Newtime = Totalspenttime - 1;
+                double VehicleCharge = Newtime * 3.70 + Totalspenttime * 2.00;
                 Console.WriteLine(VehicleCharge);
                 return VehicleCharge;
             }
@@ -122,7 +124,8 @@ namespace Project_1_Method
             }
             else if (vehicle == "3:Truck" && Totalspenttime >2 )
             {
-                double VehicleCharge = Totalspenttime * 2.50;
+                double Newtime = Totalspenttime - 2;
+                double VehicleCharge = Newtime * 2.50 + Totalspenttime * 1.00;
                 Console.WriteLine(VehicleCharge);
                 return VehicleCharge;
             }
