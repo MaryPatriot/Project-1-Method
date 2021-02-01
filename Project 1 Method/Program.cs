@@ -17,13 +17,21 @@ namespace Project_1_Method
             Console.WriteLine("C# 1th project");
             Console.WriteLine("**********************************************************************************************************");
 
-
-            string vehicle;
-            Console.WriteLine("Type of vehicle? C for Car, T for Truck, B for Bus");
             
-            vehicle = Console.ReadLine();
+            Console.WriteLine("Type of vehicle? C for Car, T for Truck, B for Bus");
+            Console.WriteLine("1:Car");
+            Console.WriteLine("2:Bus");
+            Console.WriteLine("3:Truck");
+
+            string Vehicle = Console.ReadLine();
+            
+
 
            
+           
+
+
+
 
 
 
@@ -38,8 +46,10 @@ namespace Project_1_Method
             int Minleft = Convert.ToInt32(Console.ReadLine());
 
 
-            Spenttime(Hourenter, Minenter, Hourleft, Minleft);
-         
+            double Totalspenttime = Spenttime(Hourenter, Minenter, Hourleft, Minleft);
+            VehicleCharge(Vehicle, Totalspenttime);
+
+
 
 
         }
@@ -70,6 +80,60 @@ namespace Project_1_Method
             }
 
         // Mehod to calculate parking charge for car.
+
+        static double VehicleCharge(string vehicle, double Totalspenttime)
+        {
+            
+
+
+
+            if (vehicle == "1:Car" && Totalspenttime <= 3)
+            {
+                double VehicleCharge = 0;
+                Console.WriteLine(VehicleCharge);
+                return VehicleCharge;
+
+            }
+            else if (vehicle == "1:Car" && Totalspenttime > 3)
+            {
+                double VehicleCharge = Totalspenttime * 1.50;
+                Console.WriteLine(VehicleCharge);
+                return VehicleCharge;
+            }
+
+            else if (vehicle == "2:Bus" && Totalspenttime <= 1)
+            {
+                double VehicleCharge = Totalspenttime * 2.00;
+                Console.WriteLine(VehicleCharge);
+                return VehicleCharge;
+            }
+            else if (vehicle == "2:Bus" && Totalspenttime > 1)
+            {
+                double VehicleCharge = Totalspenttime * 3.70;
+                Console.WriteLine(VehicleCharge);
+                return VehicleCharge;
+            }
+            else if (vehicle == "3:Truck" && Totalspenttime <= 2)
+            {
+                double VehicleCharge = Totalspenttime * 1.00;
+                Console.WriteLine(VehicleCharge);
+                return VehicleCharge;
+
+            }
+            else if (vehicle == "3:Truck" && Totalspenttime >2 )
+            {
+                double VehicleCharge = Totalspenttime * 2.50;
+                Console.WriteLine(VehicleCharge);
+                return VehicleCharge;
+            }
+            else
+            {
+                Console.WriteLine("Error");
+                return 0;
+            }
+            
+
+        }
 
 
 
