@@ -18,10 +18,10 @@ namespace Project_1_Method
             Console.WriteLine("**********************************************************************************************************");
 
             
-            Console.WriteLine("Type of vehicle? C for Car, T for Truck, B for Bus");
-            Console.WriteLine("1:Car");
-            Console.WriteLine("2:Bus");
-            Console.WriteLine("3:Truck");
+            Console.WriteLine("Type of vehicle? ");
+            Console.WriteLine("Car");
+            Console.WriteLine("Bus");
+            Console.WriteLine("Truck");
 
             string Vehicle = Console.ReadLine();
 
@@ -34,8 +34,7 @@ namespace Project_1_Method
 
 
 
-            int hourspent = 0;
-            int minspent = 0;
+           
 
             Console.WriteLine("Hour vehicle enetered lot: (0-24)");
             int Hourenter = Convert.ToInt32(Console.ReadLine());
@@ -45,6 +44,8 @@ namespace Project_1_Method
             int Hourleft = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Minute vehicle left lot: left lot: (0-60)");
             int Minleft = Convert.ToInt32(Console.ReadLine());
+            int hourspent= Hourleft - Hourenter;
+            int minspent= Minleft - Minenter;
 
 
             double Totalspenttime = Spenttime(Hourenter, Minenter, Hourleft, Minleft);
@@ -52,7 +53,8 @@ namespace Project_1_Method
             
            double vehicleCharge=   VehicleCharge(Vehicle, Totalspenttime);
             Console.WriteLine($"vehicleCharge: {vehicleCharge}");
-            Outputformat(Vehicle, Hourenter, Minenter, Hourleft, Minleft, hourspent, minspent, Totalspenttime);
+            Outputformat(Vehicle, Hourenter, Minenter, Hourleft, Minleft, hourspent, minspent, Totalspenttime, vehicleCharge);
+
 
 
 
@@ -67,23 +69,30 @@ namespace Project_1_Method
             {
                 Minleft = Minleft + 60;
                 Hourleft = Hourleft - 1;
-                int hourspent = Hourleft - Hourenter;
                 
-                int minspent = Minleft - Minenter;
+                 int hourspent = Hourleft - Hourenter;
+                
+                 int minspent = Minleft - Minenter;
                 
                double Totalspenttime = hourspent + Math.Ceiling ((minspent/15)* 0.25);
+                Console.WriteLine(hourspent);
+                Console.WriteLine(minspent);
                 Console.WriteLine(Totalspenttime);
                 return Totalspenttime;
 
             }
             else
             {
+                
                 int hourspent = Hourleft - Hourenter;
                 
                 int minspent = Minleft - Minenter;
                 
+
                 double Totalspenttime = hourspent + Math.Ceiling((minspent / 15) * 0.25);
                 Console.WriteLine(Totalspenttime);
+                Console.WriteLine(hourspent);
+                Console.WriteLine(minspent);
                 return Totalspenttime;
             }
             }
@@ -96,14 +105,14 @@ namespace Project_1_Method
 
 
 
-            if (vehicle == "1:Car" && Totalspenttime <= 3)
+            if (vehicle == "Car" && Totalspenttime <= 3)
             {
                 double VehicleCharge = 0;
                 Console.WriteLine(VehicleCharge);
                 return VehicleCharge;
 
             }
-            else if (vehicle == "1:Car" && Totalspenttime > 3)
+            else if (vehicle == "Car" && Totalspenttime > 3)
             {
                 double Newtime = Totalspenttime - 3;
                 double VehicleCharge = Newtime * 1.50;
@@ -111,27 +120,27 @@ namespace Project_1_Method
                 return VehicleCharge;
             }
 
-            else if (vehicle == "2:Bus" && Totalspenttime <= 1)
+            else if (vehicle == "Bus" && Totalspenttime <= 1)
             {
                 double VehicleCharge = Totalspenttime * 2.00;
                 Console.WriteLine(VehicleCharge);
                 return VehicleCharge;
             }
-            else if (vehicle == "2:Bus" && Totalspenttime > 1)
+            else if (vehicle == "Bus" && Totalspenttime > 1)
             {
                 double Newtime = Totalspenttime - 1;
                 double VehicleCharge = Newtime * 3.70 + Totalspenttime * 2.00;
                 Console.WriteLine(VehicleCharge);
                 return VehicleCharge;
             }
-            else if (vehicle == "3:Truck" && Totalspenttime <= 2)
+            else if (vehicle == "Truck" && Totalspenttime <= 2)
             {
                 double VehicleCharge = Totalspenttime * 1.00;
                 Console.WriteLine(VehicleCharge);
                 return VehicleCharge;
 
             }
-            else if (vehicle == "3:Truck" && Totalspenttime >2 )
+            else if (vehicle == "Truck" && Totalspenttime >2 )
             {
                 double Newtime = Totalspenttime - 2;
                 double VehicleCharge = Newtime * 2.50 + Totalspenttime * 1.00;
@@ -147,13 +156,14 @@ namespace Project_1_Method
 
         }
 
-        static void Outputformat(string Vehicle, int Hourenter, int Minenter, int Hourleft, int Minleft, int hourspent, int minspent, double Totalspenttime)
+        static void Outputformat(string Vehicle, int Hourenter, int Minenter, int Hourleft, int Minleft, int hourspent, int minspent, double Totalspenttime, double vehicleCharge)
         {
             Console.WriteLine($"TYPE OF VEHICLE: {Vehicle}");
             Console.WriteLine($"TIME-IN: {Hourenter} : {Minenter}");
             Console.WriteLine($"TIME-OUT: {Hourleft} : {Minleft}");
-            //Console.WriteLine($"PARKING-TIME: {hourspent}: {minspent}");
+            Console.WriteLine($"PARKING-TIME: {hourspent}: {minspent}");
             Console.WriteLine($"ROUNDED TOTAL: {Totalspenttime}");
+            Console.WriteLine($"TOTAL CHARGES: {vehicleCharge}");
 
 
         }
