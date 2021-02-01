@@ -19,13 +19,11 @@ namespace Project_1_Method
 
 
             string vehicle;
-            Console.WriteLine("Type of vehicle?");
-            Console.WriteLine("1:Car");
-            Console.WriteLine("2: Truck");
-            Console.WriteLine("3: Bus");
+            Console.WriteLine("Type of vehicle? C for Car, T for Truck, B for Bus");
+            
             vehicle = Console.ReadLine();
 
-            Carcharge(vehicle);
+           
 
 
 
@@ -46,8 +44,8 @@ namespace Project_1_Method
 
         }
 
-// Method to calculate actual time spent in parking by vehicle. 
-        static void Spenttime(int Hourenter, int Minenter, int Hourleft, int Minleft)
+        // Method to calculate actual time spent in parking by vehicle. 
+        static double Spenttime(int Hourenter, int Minenter, int Hourleft, int Minleft)
         {
 
             if (Minleft < Minenter)
@@ -55,33 +53,23 @@ namespace Project_1_Method
                 Minleft = Minleft + 60;
                 Hourleft = Hourleft - 1;
                 int hourspent = Hourleft - Hourenter;
-                int Minspent = Minleft - Minenter;
-                Console.WriteLine(hourspent );
-                Console.WriteLine(Minspent);
+                int minspent = Minleft - Minenter;
+               double Totalspenttime = hourspent + Math.Ceiling ((minspent/15)* 0.25);
+                Console.WriteLine(Totalspenttime);
+                return Totalspenttime;
+
             }
             else
             {
                 int hourspent = Hourleft - Hourenter;
-                int Minspent = Minleft - Minenter;
-                Console.WriteLine(hourspent);
-                Console.WriteLine(Minspent);
+                int minspent = Minleft - Minenter;
+                double Totalspenttime = hourspent + Math.Ceiling((minspent / 15) * 0.25);
+                Console.WriteLine(Totalspenttime);
+                return Totalspenttime;
+            }
             }
 
-
-            // Mehod to calculate parking charge for car.
-
-            static void Carcharge(string vehicle)
-            {
-                if (vehicle == 1:Car)
-                {
-                while (true)
-                {
-
-                }
-
-                }    
-
-            }
+        // Mehod to calculate parking charge for car.
 
 
 
@@ -93,6 +81,9 @@ namespace Project_1_Method
 
 
 
-        }
+
+
+
+
     }
 }
