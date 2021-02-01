@@ -24,17 +24,18 @@ namespace Project_1_Method
             Console.WriteLine("3:Truck");
 
             string Vehicle = Console.ReadLine();
-            
-
-
-           
-           
 
 
 
 
 
 
+
+
+
+
+            int hourspent = 0;
+            int minspent = 0;
 
             Console.WriteLine("Hour vehicle enetered lot: (0-24)");
             int Hourenter = Convert.ToInt32(Console.ReadLine());
@@ -47,7 +48,11 @@ namespace Project_1_Method
 
 
             double Totalspenttime = Spenttime(Hourenter, Minenter, Hourleft, Minleft);
-            VehicleCharge(Vehicle, Totalspenttime);
+            Console.WriteLine($"Totalspentime: {Totalspenttime}");
+            
+           double vehicleCharge=   VehicleCharge(Vehicle, Totalspenttime);
+            Console.WriteLine($"vehicleCharge: {vehicleCharge}");
+            Outputformat(Vehicle, Hourenter, Minenter, Hourleft, Minleft, hourspent, minspent, Totalspenttime);
 
 
 
@@ -63,7 +68,9 @@ namespace Project_1_Method
                 Minleft = Minleft + 60;
                 Hourleft = Hourleft - 1;
                 int hourspent = Hourleft - Hourenter;
+                
                 int minspent = Minleft - Minenter;
+                
                double Totalspenttime = hourspent + Math.Ceiling ((minspent/15)* 0.25);
                 Console.WriteLine(Totalspenttime);
                 return Totalspenttime;
@@ -72,7 +79,9 @@ namespace Project_1_Method
             else
             {
                 int hourspent = Hourleft - Hourenter;
+                
                 int minspent = Minleft - Minenter;
+                
                 double Totalspenttime = hourspent + Math.Ceiling((minspent / 15) * 0.25);
                 Console.WriteLine(Totalspenttime);
                 return Totalspenttime;
@@ -137,6 +146,18 @@ namespace Project_1_Method
             
 
         }
+
+        static void Outputformat(string Vehicle, int Hourenter, int Minenter, int Hourleft, int Minleft, int hourspent, int minspent, double Totalspenttime)
+        {
+            Console.WriteLine($"TYPE OF VEHICLE: {Vehicle}");
+            Console.WriteLine($"TIME-IN: {Hourenter} : {Minenter}");
+            Console.WriteLine($"TIME-OUT: {Hourleft} : {Minleft}");
+            //Console.WriteLine($"PARKING-TIME: {hourspent}: {minspent}");
+            Console.WriteLine($"ROUNDED TOTAL: {Totalspenttime}");
+
+
+        }
+
 
 
 
